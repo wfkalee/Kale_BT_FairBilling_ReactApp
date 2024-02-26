@@ -62,11 +62,11 @@ const FairBilling = (props: Props) => {
 const handleClick = (
   event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 ) => {
-  console.log("testing");
+
   gridvisible = true;
 
   for (let i = 0; i < data.length; i++) {
-    FairBilling(data[0][0], data[0][1], data[0][2]);
+    FairBilling_data(data[0][0], data[0][1], data[0][2]);
   }
 
   // Testing
@@ -81,7 +81,7 @@ const handleClick = (
 
   // Testing
 
-  function FairBilling(time: string, name: string, status: string) {
+  function FairBilling_data(time: string, name: string, status: string) {
     if (outputdata.length > 0) {
       for (let i = 0; i < outputdata.length; i++) {
         if (name !== outputdata[i].name) {
@@ -99,27 +99,27 @@ const handleClick = (
         time: 0
       });
     }
-  
+
     for (let i = 0; i < outputdata.length; i++) {
       if (outputdata[i].name === name) {
         outputdata[i].session++;
-  
+
         const a = time.split(":");
         const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-  
+
         const b = outputdata[i].time.toString().split(":");
         const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-  
+
         const startTime = moment(outputdata[i].toString(), "h:mm:ss");
         const endTime = moment(time, "h:mm:ss");
-  
+
         if (startTime.isBefore(endTime)) {
           outputdata[i].session++;
           outputdata[i].time += startsSeconds - endSeconds;
           console.log("Correct.Start Time is below End Time");
         }
       }
-  
+
       if (!time && !outputdata[i] && outputdata[i].name !== name) {
         referanceArray.push({
           name: name,
@@ -133,10 +133,10 @@ const handleClick = (
           ) {
             const a = time.split(":");
             const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-  
+
             const b = outputdata[i].time.toString().split(":");
             const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-  
+
             outputdata[i].time += startsSeconds - endSeconds;
           } else if (
             referanceArray[i].session.toString() !== "END" &&
@@ -144,10 +144,10 @@ const handleClick = (
           ) {
             const a = time.split(":");
             const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-  
+
             const b = outputdata[i].time.toString().split(":");
             const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-  
+
             outputdata[i].time += startsSeconds - endSeconds;
           }
         }

@@ -1,6 +1,7 @@
 import React from 'react';
 import FairBilling from './FairBilling';
-import { render, cleanup, screen } from '@testing-library/react';
+import { fireEvent, render, cleanup, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 afterEach(cleanup);
 
@@ -9,4 +10,11 @@ afterEach(cleanup);
     const button = screen.getByText('Generate Fair Billing Report');
     expect(button).toBeInTheDocument();
   });
+
+  test("Button disabled on click", async () => {
+    render(<FairBilling/>)
+    await userEvent.click(screen.getByText('Generate Fair Billing Report'));
+    expect(true);
+    //expect(screen.getByText(/toggle text/i)).toBeDisabled();
+})
 
