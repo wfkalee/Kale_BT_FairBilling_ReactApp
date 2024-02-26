@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from 'react-bootstrap';
-import { WidthFull } from '@mui/icons-material';
-import Moment from 'react-moment';
 import moment from 'moment';
 
 type Props = {};

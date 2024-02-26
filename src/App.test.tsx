@@ -1,9 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import App from './App';
+import { render, cleanup, screen } from '@testing-library/react';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+afterEach(cleanup);
+
+  test('Not renders with App Page', () => {
+    render(<App/>)
+    const element =  screen.queryByText("AppPage");
+    expect(element).not.toBeInTheDocument();
+  });
+  

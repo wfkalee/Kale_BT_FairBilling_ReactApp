@@ -4,7 +4,7 @@ type Props = {};
 
 const Courses = (props: Props) => {
   return (
-    <div>DefaultPage</div>
+    <div>CoursePage</div>
   );
 };
 

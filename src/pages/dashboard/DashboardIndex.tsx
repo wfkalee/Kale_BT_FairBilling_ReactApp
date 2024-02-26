@@ -4,7 +4,7 @@ type Props = {};
 
 const DashboardIndex = (props: Props) => {
   return (
-    <div>DashboardIndex</div>
+    <div>Dashboard Index Page</div>
   );
 };
 

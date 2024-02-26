@@ -7,11 +7,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          {routes}
+          {routes}   
         </Route>
       </Routes>
     </BrowserRouter>
   );
+  
 }
 
 export default App;
