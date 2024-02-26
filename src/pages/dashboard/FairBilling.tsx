@@ -38,6 +38,8 @@ const data: [string, string, string][] = [
 var gridvisible = true;
 const outputdata: OutputData[] = [];
 const referanceArray: OutputData[] = [];
+
+
 const FairBilling = (props: Props) => {
 
   return (
@@ -63,7 +65,7 @@ const handleClick = (
   console.log("testing");
   gridvisible = true;
 
-  for (let i = 0; i <= data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     FairBilling(data[0][0], data[0][1], data[0][2]);
   }
 
@@ -97,27 +99,27 @@ const handleClick = (
         time: 0
       });
     }
-
+  
     for (let i = 0; i < outputdata.length; i++) {
       if (outputdata[i].name === name) {
         outputdata[i].session++;
-
+  
         const a = time.split(":");
         const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-
+  
         const b = outputdata[i].time.toString().split(":");
         const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-
+  
         const startTime = moment(outputdata[i].toString(), "h:mm:ss");
         const endTime = moment(time, "h:mm:ss");
-
+  
         if (startTime.isBefore(endTime)) {
           outputdata[i].session++;
           outputdata[i].time += startsSeconds - endSeconds;
           console.log("Correct.Start Time is below End Time");
         }
       }
-
+  
       if (!time && !outputdata[i] && outputdata[i].name !== name) {
         referanceArray.push({
           name: name,
@@ -127,15 +129,14 @@ const handleClick = (
       } else {
         for (let i = 0; i < referanceArray.length; i++) {
           if (
-            referanceArray[i].session.toString() !== "START" &&
-            referanceArray[i].name === outputdata[i].name
+            referanceArray[i].session.toString() !== "START" && referanceArray[i].name === outputdata[i].name
           ) {
             const a = time.split(":");
             const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-
+  
             const b = outputdata[i].time.toString().split(":");
             const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-
+  
             outputdata[i].time += startsSeconds - endSeconds;
           } else if (
             referanceArray[i].session.toString() !== "END" &&
@@ -143,16 +144,17 @@ const handleClick = (
           ) {
             const a = time.split(":");
             const startsSeconds = +a[0] * 60 * 60 + +a[1] * 60 + +a[2];
-
+  
             const b = outputdata[i].time.toString().split(":");
             const endSeconds = +b[0] * 60 * 60 + +b[1] * 60 + +b[2];
-
+  
             outputdata[i].time += startsSeconds - endSeconds;
           }
         }
       }
     }
   }
+
 
 };
 

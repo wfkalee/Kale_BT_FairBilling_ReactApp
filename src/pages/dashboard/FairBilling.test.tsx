@@ -10,4 +10,3 @@ afterEach(cleanup);
     expect(button).toBeInTheDocument();
   });
 
-  
